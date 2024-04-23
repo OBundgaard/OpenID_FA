@@ -20,11 +20,13 @@ def home():
 @app.route('/login')
 def login():
 
-    state = base64.urlsafe_b64encode(secrets.token_bytes(42))
+    state = secrets.token_urlsafe(42)
 
-    code_verifier = base64.urlsafe_b64encode(secrets.token_bytes(42))
-    code_verifier_bytes = hashlib.sha256(code_verifier).digest()
-    code_verifier_base64 = base64.urlsafe_b64encode(code_verifier_bytes)
+    code_verifier = secrets.token_urlsafe(42)
+    code_verifier_bytes = code_verifier.encode()
+
+    code_challenge = hashlib.sha256(code_verifier_bytes).digest()
+    code_challenge = base64.urlsafe_b64encode(code_challenge).rstrip(b'=').decode()
 
     parameters = {
         "client_id": "flamingo",
@@ -34,11 +36,12 @@ def login():
         "prompt": "login",
         "state": state,
         "code_challenge_method": "S256",
-        "code_challenge": code_verifier_base64,
+        "code_challenge": code_challenge,
     }
 
     authorization_endpoint = "http://127.0.0.1:8080/realms/master/protocol/openid-connect/auth"
     redirect_url = f"{authorization_endpoint}?{urllib.parse.urlencode(parameters)}"
+    print(redirect_url)
 
     cache.set(state, code_verifier)
 
@@ -55,7 +58,7 @@ def callback():
         "grant_type": "authorization_code",
         "code": code,
         "redirect_uri": "http://127.0.0.1:5000/callback",
-        "code_verifier": cache.get("code_verifier"),
+        "code_verifier": cache.get(state),
         "client_id": "flamingo",
         "client_secret": "JA6fsQdvAemxApJFpfThfhMPAFGDZ6o1"
     }
@@ -68,4 +71,4 @@ def callback():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run('127.0.0.1', 5000, debug=True)
