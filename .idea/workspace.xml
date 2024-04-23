@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32ba0a81-0c1d-44dd-a67c-f547887113e3" name="Changes" comment="Fixed invalid code error">
+    <list default="true" id="32ba0a81-0c1d-44dd-a67c-f547887113e3" name="Changes" comment="Added the remaining code but still looking at id token">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
@@ -80,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1713860668235</updated>
-      <workItem from="1713860681089" duration="10071000" />
+      <workItem from="1713860681089" duration="16881000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -98,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713869704954</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added the remaining code but still looking at id token">
+      <option name="closed" value="true" />
+      <created>1713871501756</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713871501756</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,9 +115,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Fixed invalid code error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed invalid code error" />
+    <MESSAGE value="Added the remaining code but still looking at id token" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the remaining code but still looking at id token" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/OpenID_FA$OpenID_FA.coverage" NAME="OpenID_FA Coverage Results" MODIFIED="1713871400412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/OpenID_FA$OpenID_FA.coverage" NAME="OpenID_FA Coverage Results" MODIFIED="1713877499801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
