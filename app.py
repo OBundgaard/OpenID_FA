@@ -1,13 +1,15 @@
 import hashlib
 import urllib.parse
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, session
 import requests
 from flask_caching import Cache
 import secrets
 import base64
+import jwt
 
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config['CACHE_TYPE'] = 'simple'
 cache = Cache(app)
 
@@ -67,7 +69,20 @@ def callback():
     qs = urllib.parse.urlencode(parameters)
 
     payload = requests.post(f"{token_endpoint}?{qs}", data=parameters).json()
-    return payload
+
+    # Validate ID token
+    response = requests.get('http://127.0.0.1:8080/realms/master/protocol/openid-connect/certs').json()
+
+
+
+    # Fetch user info
+    headers = {"Authorization": f"Bearer {payload['access_token']}"}
+    content = requests.get('http://127.0.0.1:8080/realms/master/protocol/openid-connect/userinfo', headers=headers).json()
+
+    # Store the cookie
+    session['AuthToken'] = payload['access_token']
+
+    return content
 
 
 if __name__ == '__main__':
